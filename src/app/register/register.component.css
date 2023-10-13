@@ -1,0 +1,95 @@
+body{
+    background-color: #f8f8f8;
+      
+  
+  
+  }
+  .sec {
+      /* margin-top: 50px; */
+      box-shadow: -5px 2px 54px -9px rgb(0 0 0);
+       }
+    
+    
+    
+    /* Add a background color when the inputs get focus */
+    
+    
+    button:hover {
+      opacity: 1;
+    }
+    
+    
+    /* Float cancel and signup buttons and add an equal width */
+    .signbtn {
+      background-color: #088178;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      opacity: 0.9;
+      border-radius: 30px;
+      float: left;
+      width: 30%;
+    }
+    
+    /* Add padding to container elements */
+    .container {
+      padding: 16px;
+    }
+    
+    /* The Modal (background) */
+    
+    /* Style the horizontal ruler */
+    hr {
+      border: 1px solid #f1f1f1;
+      margin-bottom: 25px;
+    }
+    
+    
+    /* Clear floats */
+    .clearfix::after {
+      /* content: ""; */
+      clear: both;
+      /* display: table; */
+    }
+    
+    /* Change styles for cancel button and signup button on extra small screens */
+    @media screen and (max-width: 300px) {
+      .cancelbutton,
+      .signbtn {
+        width: 100%;
+      }
+    }
+    
+    .content {
+      font-size: 30px;
+    }
+    a{
+      text-decoration: none;
+      color: white;
+    }
+  
+    
+    span.psw {
+      float: right;
+      padding-top: 16px;
+      font-size: 20px;
+    }
+    .forgot{
+      color: black;
+    }
+    .forgotBtn{
+      border-color: transparent;
+  
+    }
+    .forgot:hover{
+      color: red;
+    }
+  
+    .error{
+      display: none;
+    }
+    
+  
+   

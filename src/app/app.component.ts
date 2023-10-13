@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'myApp';
+
+
+  constructor(private _AuthService: AuthService) {
+    _AuthService.userData.subscribe(() => {
+      if (_AuthService.userData.getValue() != null) {
+        setInterval(() => this._AuthService.logout(), 86400000)
+      }
+    })
+
+
+  }
+  title = 'WellSpring';
+
 }

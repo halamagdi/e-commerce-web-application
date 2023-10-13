@@ -1,0 +1,96 @@
+<!--=============== ACCOUNTS ===============-->
+<section class="accounts pd-y my-5">
+  <div class="account-container grid container">
+    <div class="account-tabs">
+      <p class="account-tab active-tab" data-target="#dashboard">
+        <i class="fa fa-sliders"></i> Dashboard
+      </p>
+
+      <p class="account-tab" data-target="#orders">
+        <i class="fa fa-shopping-bag"></i> Orders
+      </p>
+
+      <p class="account-tab" data-target="#update-profile">
+        <i class="fa fa-user"></i> Update Profile
+      </p>
+
+  
+      <p class="account-tab" data-target="#change-password">
+        <i class="fa fa-user"></i> Change Password
+      </p>
+
+      <p (click)="logout()" class="account-tab">
+        <i  class="fa fa-arrow-right-from-bracket"></i> Logout
+      </p>
+    </div>
+
+    <div class="tabs-content">
+     
+
+      <div class="tab-content" content id="orders">
+        <h3 class="tab-header">Your Orders</h3>
+
+        <div class="tab-body">
+          <table *ngFor="let order of orders" class="placed-order-table w-100">
+            <tr>
+              <th>Orders</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Total</th>
+            </tr>
+
+            <tr>
+              <td>#1357</td>
+              <td>{{order.createdAt}}</td>
+              <td>{{order.status}}</td>
+              <td>{{order.totalPrice}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="tab-content" content id="update-profile">
+        <h3 class="tab-header">Update Profile</h3>
+
+        <div class="tab-body">
+          <form [formGroup]="updateUserForm" (ngSubmit)=" submitupdateUserForm(updateUserForm)" class="form grid">
+            <input type="text" formControlName="name" placeholder="Username" class="form-control">
+
+            <div *ngIf="updateUserForm.get('name')?.errors !=null && updateUserForm.get('name')?.touched"
+              class="alert alert-danger ">
+              <p *ngIf="updateUserForm.get('name')?.errors?.['required']">Name is required</p>
+              <p *ngIf="updateUserForm.get('name')?.errors?.['minlength']">Name minlength is 3</p>
+              <p *ngIf="updateUserForm.get('name')?.errors?.['maxlength']">Name maxlength is 10</p>
+
+            </div>
+
+            <div class="form-btn">
+              <button [disabled]="updateUserForm.invalid" class="btn btn--md">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="tab-content" content id="change-password">
+        <h3 class="tab-header">Change Password</h3>
+
+        <div class="tab-body">
+          <form [formGroup]="changePasswordForm" (ngSubmit)=" submitchangeForm(changePasswordForm)" class="form grid">
+            <input formControlName="password" type="password" placeholder="New Password" class="form-control">
+
+            <div
+              *ngIf="changePasswordForm.get('password')?.errors !=null && changePasswordForm.get('password')?.touched"
+              class="alert alert-danger ">
+              <p *ngIf="changePasswordForm.get('password')?.errors?.['required']">Password is required</p>
+              <p *ngIf="changePasswordForm.get('password')?.errors?.['pattern']">Password is inavlid</p>
+
+            </div>
+            <div class="form-btn">
+              <button [disabled]="changePasswordForm.invalid" class="btn btn--md">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

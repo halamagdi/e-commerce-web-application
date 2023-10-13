@@ -1,0 +1,114 @@
+<section class="checkout pd-y">
+    <div class="checkout-container container grid">
+      <div class="checkout-group">
+        <h3 class="section-title">Billing Details</h3>
+
+        <div *ngIf="error" class="alert alert-danger m-2">
+          {{error}}
+
+      </div>
+        <form [formGroup]="checkoutForm" (ngSubmit)=" submitCheckoutForm(checkoutForm)" class="form grid">
+          <input type="text"  formControlName="name" placeholder="Name" class="form-control p-2">
+          <div *ngIf="checkoutForm.get('name')?.errors !=null && checkoutForm.get('name')?.touched"
+          class="alert alert-danger ">
+          <p *ngIf="checkoutForm.get('name')?.errors?.['required']">Name is required</p>
+          <p *ngIf="checkoutForm.get('name')?.errors?.['minlength']">Name minlength is 3</p>
+          <p *ngIf="checkoutForm.get('name')?.errors?.['maxlength']">Name maxlength is 10</p>
+
+      </div>
+
+          <input type="text"  formControlName="address" placeholder="Address" class="form-control p-2">
+
+          <div *ngIf="checkoutForm.get('address')?.errors !=null && checkoutForm.get('address')?.touched"
+          class="alert alert-danger ">
+          <p *ngIf="checkoutForm.get('address')?.errors?.['required']">Address is required</p>
+          <p *ngIf="checkoutForm.get('address')?.errors?.['minlength']">Address minlength is 10</p>
+          <p *ngIf="checkoutForm.get('address')?.errors?.['maxlength']">Address maxlength is 20</p>
+
+      </div>
+          <input type="text"  formControlName="city" placeholder="City" class="form-control p-2">
+
+          <div *ngIf="checkoutForm.get('city')?.errors !=null && checkoutForm.get('city')?.touched"
+          class="alert alert-danger ">
+          <p *ngIf="checkoutForm.get('city')?.errors?.['required']">City is required</p>
+          <p *ngIf="checkoutForm.get('city')?.errors?.['minlength']">City minlength is 3</p>
+          <p *ngIf="checkoutForm.get('city')?.errors?.['maxlength']">City maxlength is 10</p>
+
+      </div>
+          <input type="text"  formControlName="country" placeholder="Country" class="form-control p-2">
+          <div *ngIf="checkoutForm.get('country')?.errors !=null && checkoutForm.get('country')?.touched"
+          class="alert alert-danger ">
+          <p *ngIf="checkoutForm.get('country')?.errors?.['required']">Country is required</p>
+          <p *ngIf="checkoutForm.get('country')?.errors?.['minlength']">Country minlength is 3</p>
+          <p *ngIf="checkoutForm.get('country')?.errors?.['maxlength']">Country maxlength is 10</p>
+
+      </div>
+          <input type="text"  formControlName="phone" placeholder="Phone" class="form-control p-2">
+
+          <div *ngIf="checkoutForm.get('phone')?.errors !=null && checkoutForm.get('phone')?.touched"
+          class="alert alert-danger ">
+          <p *ngIf="checkoutForm.get('phone')?.errors?.['required']">Phone is required</p>
+          <p *ngIf="checkoutForm.get('phone')?.errors?.['minlength']">Phone minlength is 11</p>
+
+      </div>
+
+
+      <div class="checkout-group">
+        <h3 class="section-title">Cart Totals</h3>
+
+        <table class="order-table w-100">
+          <tr>
+            <th colspan="2">Products</th>
+            <th>Total</th>
+          </tr>
+
+          <tr *ngFor="let product of products ">
+            <td><img [src]="product.imageCover" alt="" class="order-img"></td>
+
+            <td>
+              <h3 class="table-title">{{product.name}}</h3>
+              <p class="table-quan">{{product.quantity}}</p>
+            </td>
+
+            <td><span class="table-price">{{product.price}}</span></td>
+          </tr>
+
+          
+          <tr>
+            <td><span class="order-subtitle">SubTotal</span></td>
+            <td colspan="2"><span class="order-table-price">{{total}}</span></td>
+          </tr>
+
+          <tr>
+            <td><span class="order-subititle">Shipping</span></td>
+            <td colspan="2"><span class="order-table-price">Free Shipping</span></td>
+          </tr>
+
+          <tr>
+            <td><span class="order-subtitle">Total</span></td>
+            <td colspan="2"><span class="order-grand-total">{{total}}</span></td>
+          </tr>
+        </table>
+      </div>
+
+        <div class="payment-methods">
+          <h3 class="checkout-title payment-title">Payment</h3>
+
+          
+          <div class="payment-option flex">
+            <input type="radio" name="radio" class="payment-input">
+            <label class="payment-label ms-1" for="">Cash on delivery </label>
+          </div>
+
+          <div class="payment-option flex">
+            <input type="radio" name="radio" class="payment-input">
+            <label class="payment-label ms-1" for="">Online Payment</label>
+          </div>
+        </div>
+
+        <button  [disabled]="checkoutForm.invalid" class="btn btn--md ">Place Order</button>
+      </form>
+    </div>
+
+    </div>
+  </section>

@@ -1,0 +1,52 @@
+<!--=============== WISHLIST ===============-->
+
+<ng-container *ngIf="products.length != 0">
+  <section class="wishlist container section--lg pd-y">
+    <div class="table-container">
+      <table class="table">
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Remove</th>
+        
+        </tr>
+
+        <tr *ngFor="let product of products ">
+          <td><img img [src]="product.imageCover" alt="" class="table-img"></td>
+          <td>
+            <p class="table-desc">{{product.name}}</p>
+          </td>
+
+          <td><span class="table-price">{{product.price}}</span></td>
+
+          <td><span class="table-stock">{{product.quantity}}</span></td>
+
+          <td><a (click)="addtocart(product)" class="btn btn btn--sm">Add To Cart</a></td>
+
+          <td><i (click)="removeItem(product)" class="fa fa-trash table-trash"></i></td>
+        </tr>
+
+
+      </table>
+    </div>
+  </section>
+</ng-container>
+
+
+
+<ng-container *ngIf="products.length ==0">
+  <div class="container">
+    <div class="card">
+      <h5 class="card-title">My wishlist</h5>
+
+    </div>
+    <div class="center">
+      <img src="../../assets/12083346_Wavy_Bus-17_Single-09.jpg" alt="">
+      <h4>Your wishlist is empty</h4>
+      <h5>Add item to it</h5>
+      <button routerLink="/product" class="btn btn-dark my-2 px-3">Shop Now</button>
+    </div>
+  </div>
+</ng-container>

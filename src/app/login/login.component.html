@@ -1,0 +1,53 @@
+<div class="sec w-75 m-auto ">
+    <div class="row my-5">
+
+        <div class="container bg-transparent text-center">
+            <h1>Login</h1>
+            <p>Please fill in this form to Login.</p>
+            <hr>
+            <div *ngIf="error" class="alert alert-danger m-2">
+                {{error}}
+            </div>
+
+            <form [formGroup]="loginForm" (ngSubmit)=" submitLoginForm(loginForm)" class="container ">
+                <div>
+                    <label for="mail"><b>Email</b></label>
+                    <input type="text" formControlName="email" placeholder="Enter Email" id="mail"
+                        class="form-control my-3 w-50 mx-auto" required>
+
+                    <div *ngIf="loginForm.get('email')?.errors !=null && loginForm.get('email')?.touched"
+                        class="alert alert-danger ">
+                        <p *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</p>
+                        <p *ngIf="loginForm.get('email')?.errors?.['email']">Email is inavlid</p>
+
+                    </div>
+
+                </div>
+                <div>
+                    <label for="pass"><b>Password</b></label>
+                    <input type="password" formControlName="password" placeholder="Enter Password" id="pass"
+                        class="form-control my-3 w-50 mx-auto" required>
+
+                    <div *ngIf="loginForm.get('password')?.errors !=null && loginForm.get('password')?.touched"
+                        class="alert alert-danger ">
+                        <p *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</p>
+                        <p *ngIf="loginForm.get('password')?.errors?.['pattern']">Password is inavlid</p>
+
+                    </div>
+                </div>
+                <div class="clearfix">
+
+                    <button [disabled]="loginForm.invalid" type="submit" class="signbtn"><a>Login</a></button>
+                    <button class=" float-end forgotBtn"><a class="forgot" routerLink="/register">Create new account</a></button>
+                </div>
+            </form>
+        </div>
+
+
+
+    </div>
+
+        
+
+   
+</div>

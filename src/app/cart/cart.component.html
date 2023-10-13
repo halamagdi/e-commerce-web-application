@@ -1,0 +1,93 @@
+<ng-container *ngIf="products.length != 0">
+
+  <section class="cart  container pd-y section--lg">
+    <div class="table-container">
+      <table class="table">
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th>Remove</th>
+        </tr>
+
+        <tr *ngFor="let product of products ; let i = index">
+          <td><img [src]="product.imageCover" alt="" class="table-img"></td>
+          <td>
+            <p class="table-desc">{{product.name}}</p>
+          </td>
+
+          <td><span class="table-price">{{product.price}}</span></td>
+
+          <td><input [(ngModel)]="product.quantity" [ngModelOptions]="{standalone : true}"
+               type="number" value="{{product.quantity}}" class="quan"></td>
+
+          <td><span class="table-subtotal">{{product.quantity * product.price}}</span></td>
+
+          <td><i (click)="removeItem(product)" class="fa fa-trash table-trash"></i></td>
+        </tr>
+
+      </table>
+    </div>
+
+    <div class="divider">
+      <i class="fa fa-fingerprint"></i>
+    </div>
+
+    <div class="cart-total">
+      <h3 class="section-title">Cart Totals</h3>
+
+      <table class="cart-total-table w-100">
+        <!-- <tr>
+          <td><span class="cart-total-title">Cart Subtotal</span></td>
+          <td><span class="cart-total-price">{{}}</span></td>
+        </tr> -->
+
+        <tr>
+          <td><span class="cart-total-title">Shipping</span></td>
+          <td><span class="cart-total-price">0</span></td>
+        </tr>
+
+        <tr>
+          <td><span class="cart-total-title">Total</span></td>
+          <td><span class="cart-total-price">{{total}}</span></td>
+        </tr>
+      </table>
+
+
+    </div>
+
+
+
+    <div class="cart-actions">
+
+      <a routerLink="/product" class="btn flex btn--md">
+        <i class="fa fa-shopping-bag"></i> Continue Shopping
+      </a>
+      <a routerLink="/checkout" class="btn flex btn-md">
+        <i class="fa fa-box"></i> Proceed To Checkout
+      </a>
+    </div>
+
+
+
+
+  </section>
+</ng-container>
+
+
+<ng-container *ngIf="products.length == 0">
+  <div class="container">
+    <div class="card">
+      <h5 class="card-title">My cart</h5>
+
+    </div>
+    <div class="center">
+      <img src="../../assets/12083346_Wavy_Bus-17_Single-09.jpg" alt="">
+      <h4>Your cart is empty</h4>
+      <h5>Add item to it</h5>
+      <button routerLink="/product" class="btn btn-dark my-2 px-3">Shop Now</button>
+    </div>
+  </div>
+</ng-container>

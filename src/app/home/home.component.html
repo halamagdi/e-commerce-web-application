@@ -1,0 +1,109 @@
+
+
+
+<section id="hero">
+  <h4>Online retailer</h4>
+  <h2> We offer a wide selection </h2>
+  <p>of high-quality products</p>
+  <p>Save more with coupons & get offers!</p>
+  <button routerLink="/product">shop Now</button>
+</section>
+
+<!-- -------------- -------start Featured Products-------- -->
+
+<section id="product1" class="section-p1">
+  <h2>Featured Products</h2>
+  <P>We Aim To Ensure A healthy Life </P>
+  <div class="pro-container">
+    
+    <div *ngFor="let product of featuredProducts | filter:searchKey:'name'" class="pro">
+      <a [routerLink]="['/productdetails', product._id]" >
+        <img  [src]="product.imageCover" alt="">
+        <div class="des">
+          <!-- <span>Dermatique</span> -->
+          <h5>{{product.name}}</h5>
+          <div class="star">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+          <h4>{{product.price}}</h4>
+        </div>
+
+       
+       </a>
+       <div class="d-flex ">
+        <div class="cart">
+          <a  (click)="addtocart(product)" ><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+        <div class="cart mx-5">
+          <a (click)="addtoWishlist(product)" ><i class="fa-solid fa-heart"></i></a>
+        </div>
+        
+      </div>
+
+    
+    </div>
+   
+  </div>
+
+
+
+</section>
+<!-- -------------- -------End Featured Products-------- -->
+
+<!-- -------------- -------start new arrival Products-------- -->
+
+<section id="product1" class="section-p1">
+  <h2>New Arrival</h2>
+  <P>We Aim To Ensure A healthy Life </P>
+  <div class="pro-container">
+    <div *ngFor="let product of newArrival | filter:searchKey:'name'" class="pro">
+     <a [routerLink]="['/productdetails', product._id]" >
+      <img  [src]="product.imageCover" alt="">
+      <div class="des">
+        <!-- <span>Dermatique</span> -->
+        <h5>{{product.name}}</h5>
+        <div class="star">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+        <h4>{{product.price}}</h4>
+      </div>
+     </a>
+
+      <div class="d-flex ">
+        <div class="cart">
+          <a   ><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+        <div (click)="addtocart(product)" class="cart mx-5">
+          <a (click)="addtoWishlist(product)" ><i class="fa-solid fa-heart"></i></a>
+        </div>
+        
+      </div>
+    </div>
+   
+  </div>
+
+
+
+</section>
+<!-- -------------- -------end new arrival Products-------- -->
+
+
+<section id="newsletter" class="section-m1">
+  <div class="newtext">
+    <h4>Sign up For Newsletter</h4>
+    <p>Get E-mail updates about our latest shop and <span>special offers</span></p>
+  </div>
+  <!-- <div class="form">
+      <input type="text" placeholder="Your email address">
+      <button class="normal">Sign up</button>
+
+    </div> -->
+</section>

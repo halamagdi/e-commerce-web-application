@@ -1,0 +1,33 @@
+<section id="product1" class="section-p1">
+    
+    <div class="pro-container">
+        <div  *ngFor="let product of products | filter:searchKey:'name'" class="pro">
+           <a [routerLink]="['/productdetails', product._id]" class="links">
+            <img  [src]="product.imageCover" class="img"  alt="" >
+            <div class="des">
+              <!-- <span>{{product.brandName}}</span> -->
+              <h5>{{product.name}}</h5>
+              <div class="star">
+                 <i class="fas fa-star"></i>
+                 <i class="fas fa-star"></i>
+                 <i class="fas fa-star"></i>
+                 <i class="fas fa-star"></i>
+                 <i class="fas fa-star"></i>
+              </div>
+              <h4>{{product.price}}</h4>
+            </div>
+           
+           </a>
+           <div class="d-flex ">
+            <div class="cart">
+              <a  (click)="addtocart(product)"><i class="fa-solid fa-cart-shopping"></i></a>
+            </div>
+            <div class="cart mx-5">
+              <a (click)="addtoWishlist(product)"><i class="fa-solid fa-heart"></i></a>
+            </div>
+            
+          </div>
+
+        </div>
+    </div>
+</section>
